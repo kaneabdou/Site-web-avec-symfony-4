@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+
+
+  {% block title %}{{parent()}} - Inscription {% endblock %}
+
+
+  {% block body %}
+   <h1 style="font-size:6.1em;margin-left:260px;margin-top:50px">Inscription sur Inst'Blog !</h1>
+     <div class="container" style="width:600px;margin-top:60px">
+
+
+
+     {{form_start(form)}}
+
+       {{form_row(form.username,{'label':"Nom d'utilisateur:",'attr':{'placeholder':"Veuiller saisir votre pseudo"}})}}
+       {{form_row(form.email,{'label':"Email:",'attr':{'placeholder':"Veuiller saisir votre mail"}})}}
+       {{form_row(form.password,{'label':"Mot de passe:",'attr':{'placeholder':"Veuiller saisir votre mot de passe"}})}}
+       {{form_row(form.confirm_password,{'label':"Confirmer votre mot de passe",'attr':{'placeholder':"Confirmer votre mot de passe"}})}}<br>
+      <button class="btn btn-success" style="margin-left:175px">Valider votre inscription!</button>
+     {{form_end(form)}}</div>
+      
+  {% endblock %}

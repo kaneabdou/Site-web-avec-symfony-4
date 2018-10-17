@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+  {% block title %}{% endblock %}
+
+     {% block body %} 
+
+     <h1 style="font-size:6.1em;margin-left:300px;margin-top:50px">Bienvenue sur le site!</h1>
+   
+             <form method="post" action="{{path('connexion')}}">
+                 <div class="form-group" style="width:500px;margin-left:490px;margin-top:100px">
+                       <tr><td><label for="_username">Nom d'utilisateur</label></td><td><input type="text" name="_username" id="_username" class="form-control"></td></tr>
+                       <tr><td><label for="_password">Mot de passe</label></td><td><input type="password" name="_password" id="_password" class="form-control"></td></tr><br>
+                       <tr><td></td><td><button class="btn btn-success" style="float:left">Se connecter</button></td><td><a href="{{path('registration')}}" style="float:right">S'inscrire?</a></td></tr>
+                 </div>
+             </form>
+               
+    
+
+     {% endblock %}

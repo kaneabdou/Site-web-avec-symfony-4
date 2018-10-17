@@ -1,0 +1,50 @@
+
+{% extends 'base.html.twig' %}
+
+		{% block title %}{{parent()}} - Les Themes {% endblock %}
+  
+
+
+        {% block body %}
+
+        <div class="jumbotron" style="margin-top:10px">
+  <h1 class="display-3">Insta'Blog</h1>
+  
+  
+</div>
+             
+        <div class="container">
+   
+        	<section>
+
+                <article>
+
+                       {% for article in articles %}
+
+                         <div class="card mb-3" style="width:300px ;float:left;margin-left:35px">
+  <h3 class="card-header active" >{{article.title}}</h3>
+  <div class="card-body">
+    <h5 class="card-title">Publié le {{article.createdAt|date('d/m/Y')}} à</h5>
+    <h6 class="card-subtitle text-muted">{{article.createdAt|date('H:i')}}</h6>
+  </div>
+  <img style="height: 200px; width: 100%; display: block;" src="{{article.image}}" alt="Card image">
+  <div class="card-body">
+    <p class="card-text"><a href="{{path('blog_show',{'id':article.id})}}" class="btn btn-success" style="float:right">Lire la suite</a> </p>
+  </div>
+ 
+  </div>
+</div>
+                             
+                             
+                          
+                       {% endfor %}
+
+                </article>
+
+        	</section>
+
+          
+
+        </div>
+            
+        {% endblock %}

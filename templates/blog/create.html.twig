@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme article 'bootstrap_4_layout.html.twig' %}
+ {% block title %}
+    {{parent()}} - Poster un article
+ {% endblock %} 
+
+		{% block body %}
+     
+
+     <div class="container" style="width:600px;margin-top:60px">
+     	<h1>{% if editMode %}
+              Modification de l'article!
+              {% else %}
+
+                 Ajouter un article!
+               {% endif %}
+          
+     	</h1>
+
+     {{form_start(article)}}
+
+              {{form_row(article.category)}}
+              {{form_row(article.title)}}
+              {{form_row(article.content|raw)}}
+              {{form_row(article.image)}}
+
+              <button class="btn btn-success" style="float:right">
+     
+
+                {% if editMode %}
+                    Enregistrer les modications
+
+               {% else %}
+                Ajouter l'article
+
+                {% endif %}
+
+              </button>
+
+           {{form_end(article)}}
+
+           
+
+     </div>
+           
+
+		{% endblock %}

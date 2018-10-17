@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% form_theme article 'bootstrap_4_layout.html.twig' %}
+
+{% form_theme CommentForm 'bootstrap_4_layout.html.twig' %}
+
+{% block title %} {{article.title}} {% endblock %}
+
+     {% block body %} 
+
+      
+       
+              
+
+          <article>
+           <div class="container" style="margin:30px">
+
+                   <h1>{{article.title}}</h1>
+              
+              <img style="height: 500px; width: 100%; display: block;" src="{{article.image}}" alt="Card image"><br><br>
+              <p>Publié le {{article.createdAt|date('d/m/Y')}} à {{article.createdAt|date('H:i')}}</p>
+              <p>Catégorie:{{article.category.title}}</p>
+
+              </article>
+
+              <section class="commentaire">
+                   
+                    <h1> {{article.comments|length}} Commentaires</h1><hr><br>
+                    
+
+                    {% for comment in article.comments %}
+              
+                     <div class="comment">
+
+                       <div class="row">
+                          <div class="col-3">
+                             <strong>{{comment.author}}</strong>(<small>{{comment.createdAt|date('d/m/Y')}} à {{comment.createdAt|date('H:i')}}</small>)
+
+                          </div>
+
+                          <div class="col">{{comment.content|raw}}</div>
+
+                     </div>
+                      
+
+                     </div>
+
+                     
+                        
+                    
+                   
+                    {% endfor %}<br><br>
+                      
+                      {% if app.user %}
+      <div class="formulaire" style="width:600px;margin-left:30%">
+                            
+          {{form_start(CommentForm)}}
+
+              {{form_row(CommentForm.author)}}
+              {{form_row(CommentForm.content)}}
+               <button class="btn btn-success" style="margin-left:200px">Envoyer votre commentaire! </button>
+              
+          {{form_end(CommentForm)}}
+          {% else %}
+              <h2 style="font-size:3.1em;margin-left:300px;margin-top:50px"><a href="{{path('connexion')}}"> Veuillez vous connecter pour pouvoir commenter !</a></h2>
+          {% endif %}
+                                 
+
+                     </div>
+              
+
+
+              </section>
+             
+          
+                    
+
+     {% endblock %}
